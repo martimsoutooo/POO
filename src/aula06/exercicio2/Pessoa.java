@@ -5,6 +5,7 @@ class Pessoa{
     private int cc;
     private DateYMD dataNasc;
 
+
     public Pessoa(String nome, int cc, DateYMD dataNasc){
         this.nome = nome;
         this.cc = cc;
@@ -13,6 +14,7 @@ class Pessoa{
     public String getName(){
         return nome;
     }
+
 
     public int getCc(){
         return cc;

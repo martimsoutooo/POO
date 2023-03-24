@@ -1,23 +1,30 @@
 package aula06.exercicio2;
 
 import java.util.regex.Pattern;
-
-
 import java.util.regex.Matcher;
 import java.lang.Integer;
+import java.util.ArrayList;
 
 public class Contacto extends Pessoa {
+    private String pessoa;
     static int nextId = 1;
     private int numTel;
     private String email;
     private int id;
+    static ArrayList<Contacto> contactList = new ArrayList<Contacto>();
+
     public Contacto(String nome, int cc, DateYMD dataNasc, int numTel, String email) {
         super(nome, cc, dataNasc);
         setEmail(email);
         setNumTel(numTel);
         nextId++;
     }
-
+    public String getPessoa() {
+        return this.pessoa;
+    }
+    public void setPessoa(String pessoa) {
+        this.pessoa = pessoa;
+    }
     public Contacto(String nome, int cc, DateYMD dataNasc, int numTel) {
         super(nome, cc, dataNasc);
         setNumTel(numTel);
