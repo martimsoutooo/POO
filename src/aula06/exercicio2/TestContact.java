@@ -1,8 +1,6 @@
 package aula06.exercicio2;
 
 import java.util.Scanner;
-import java.util.ArrayList;
-
 public class TestContact {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -24,14 +22,8 @@ public class TestContact {
 
             switch(escolha){
                 case 1:
-                    System.out.print("Insira um número de telemóvel (ex: 923423120)- "); 
-                    int numTel = sc.nextInt();
-
-                    System.out.println("Insira um email (ex: utilizador@dominio.pt)");
-                    String email = sc.nextLine();
                    
                 case 2:
-                    
 
                 case 3:
                     
@@ -41,20 +33,6 @@ public class TestContact {
 
             } 
         }while (escolha != 0);
-
-
-
-        ArrayList<Object> contactos = new ArrayList<Object>();
-
-        public Void addContacto(Contacto contacto) {
-            if (contactos.contains(contacto)){
-                System.out.println("Contacto já existe!");
-            }
-            contactos.add(contacto);
-            System.out.println("Contacto adicionado com sucesso!");
-            
-        }
-
-        
+        sc.close();
     }
 }

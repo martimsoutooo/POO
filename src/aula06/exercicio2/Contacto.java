@@ -2,8 +2,6 @@ package aula06.exercicio2;
 
 import java.util.regex.Pattern;
 
-import aula06.exercicio2.DateYMD;
-import aula06.exercicio2.Pessoa;
 
 import java.util.regex.Matcher;
 import java.lang.Integer;
@@ -50,7 +48,9 @@ public class Contacto extends Pessoa {
 
         return matcher.matches();
     }
-
+    public int getId() {
+        return id;
+    }
     public int getNumTel() {
         return numTel;
     }
