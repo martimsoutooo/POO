@@ -71,7 +71,7 @@ public class TestContact {
 
                     break;
                 case 3:
-                    System.out.print("Insert the name of contact you want to delete: ");
+                    System.out.print("Insert the name of contact you want to delete:");
                     nome = sc.next();
 
                     for (int i = 0; i < Contacto.contactList.size(); i++) {
