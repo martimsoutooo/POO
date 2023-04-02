@@ -1,4 +1,4 @@
-package aula04;
+package aula07.exercicio1;
 
 import java.util.Scanner;
 import Utils.UserInputDouble;
@@ -24,7 +24,10 @@ public class figureMain {
                     System.out.print("Insert the radius of your circle- ");
                     
                     double radius = UserInputDouble.superior(0);
-                    figureCircle figura1 = new figureCircle(radius); 
+                    System.out.print("Insert the color of your circle- ");
+                    String corTriangle = sc.next();
+
+                    figureCircle figura1 = new figureCircle(radius, corTriangle); 
                     figures.add(figura1);
                     break;
                 case 2:
@@ -37,7 +40,10 @@ public class figureMain {
                     System.out.print("Insert side C of your triangle- ");
                     double ladoC = UserInputDouble.superior(0);
 
-                    figureTriangle figura2 = new figureTriangle(ladoA, ladoB, ladoC);
+                    System.out.print("Insert the color of your triangle- ");
+                    String corCircle = sc.next();
+
+                    figureTriangle figura2 = new figureTriangle(ladoA, ladoB, ladoC, corCircle);
                     figures.add(figura2);
                     break;
                 case 3:
@@ -47,11 +53,14 @@ public class figureMain {
                     System.out.print("Insert the height of your rectangle- ");
                     double height = UserInputDouble.superior(0);
 
+                    System.out.print("Insert the color of your rectangle- ");
+                    String corRectangle = sc.next();
+
                     if(length == height){
                         System.out.println("Did you know that squares are also rectangles?");
                     }
 
-                    figureRectangle figura3 = new figureRectangle(length, height);
+                    figureRectangle figura3 = new figureRectangle(length, height, corRectangle);
                     figures.add(figura3);
                     break;
                 case 0:
@@ -68,17 +77,17 @@ public class figureMain {
             System.out.println(figures.get(i));
         }
 
-        System.out.print("Indica o indice da lista que queres comparar- ");
+        System.out.print("Choose the index of the list you want to compare-");
         int escolha1 = sc.nextInt();
 
-        System.out.print("Indica o indice da lista que queres comparar- ");
+        System.out.print("Choose the index of the list you want to compare-");
         int escolha2 = sc.nextInt();
 
         if((figures.get(escolha1)).getClass() == (figures.get(escolha2)).getClass() && figures.get(escolha1).equals(figures.get(escolha2))){
-            System.out.println("As figuras são iguais!");
+            System.out.println("The figures are the same");
         }
         else{
-            System.out.println("As figuras têm dimensões diferentes ou não são do mesmo tipo");
+            System.out.println("The figures are different");
         }
         sc.close();
    }
