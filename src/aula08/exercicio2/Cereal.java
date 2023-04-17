@@ -18,6 +18,6 @@ public class Cereal extends Alimento {
 
     @Override
     public String toString() {
-        return "Cereal [nome=" + nome + "; " + super.toString() + "]";
+        return "Cereal nome=" + nome + "; " + super.toString() + "";
     }
 }

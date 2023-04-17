@@ -18,6 +18,6 @@ public class Legume extends Alimento {
 
     @Override
     public String toString() {
-        return "Legume [nome=" + nome + "; " + super.toString() + "]";
+        return "Legume nome=" + nome + "; " + super.toString() + "";
     }
 }

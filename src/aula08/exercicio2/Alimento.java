@@ -37,7 +37,7 @@ public abstract class Alimento {
 
     @Override
     public String toString() {
-        return "Alimento [proteinas=" + proteina + ", calorias=" + calorias + ", peso=" + peso + "]";
+        return "Alimento proteinas=" + proteina + ", calorias=" + calorias + ", peso=" + peso + "";
     }
 
     
