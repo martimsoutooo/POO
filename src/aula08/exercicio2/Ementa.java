@@ -2,13 +2,12 @@ package aula08.exercicio2;
 
 public class Ementa {
 
-    public static final int NR_PRATOS_NA_EMENTA = 4;
+    public static final int NR_PRATOS_NA_EMENTA = 15;
 
     private String nome;
     private String local;
     private Prato[] pratos;
     private int nrPratosAdicionados;
-    private java.time.LocalDateTime DiaSemana;
 
     public Ementa(String nome, String local) {
         this.nome = nome;
@@ -39,18 +38,13 @@ public class Ementa {
     public String toString() {
 
         StringBuilder builder = new StringBuilder();
-
-        builder.append("Ementa [nome=" + nome + ", local=" + local + ", dia " + DiaSemana + "]\n");
-        for (Prato prato : pratos) {
-            builder.append("\t");
-            builder.append(prato.getNome());
-            builder.append("\t");
+        for (int i = 0; i < nrPratosAdicionados; i++) {
+            builder.append(pratos[i]).append(", dia ").append(DiaSemana.values()[i]).append("\n");
         }
-        builder.append("]");
         return builder.toString();
 
     }
-    public void addPrato(Prato prato) {
+    public void addPrato(Prato prato, DiaSemana diaSemana) {
         pratos[nrPratosAdicionados] = prato;
         nrPratosAdicionados++;
     }
@@ -59,11 +53,5 @@ public class Ementa {
         return pratos[ordem];
     }
 
-    public void addPrato(Prato p, Object o) {
-        throw new UnsupportedOperationException();
-    }
 
-    public void listarPratos() {
-        throw new UnsupportedOperationException();
-    }
 }

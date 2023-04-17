@@ -16,4 +16,8 @@ public class PratoDieta extends Prato{
     public double getMaxCalorias() {
         return maxCalorias;
     }
+    @Override
+    public String toString() {
+        return super.toString() + "- Dieta ("+maxCalorias+" Calorias)";
+    }
 }
