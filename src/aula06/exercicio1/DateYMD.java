@@ -1,6 +1,6 @@
 package aula06.exercicio1;
 
-class DateYMD{
+public class DateYMD{
     private int month;
     private int year;
     private int day;

@@ -1,6 +1,6 @@
 package aula06.exercicio1;
 
-class Pessoa{
+ public class Pessoa{
     private String nome;
     private int cc;
     private DateYMD dataNasc;

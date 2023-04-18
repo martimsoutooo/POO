@@ -2,132 +2,96 @@ package aula07.exercicio2;
 
 
 public class DateND extends Date {
-    private int daysFrom2000;
+
+    private int days = 0;
 
     public DateND(int day, int month, int year) {
-        if (!valid(day, month, year)) {
-            throw new IllegalArgumentException("Data inválida.");
+        setDate(day, month, year);
+    }
+
+    private static void validDay(int day, int month, int year) {
+        if (day < 1 || day > monthDays(month, year)) {
+            throw new IllegalArgumentException("Invalid day");
         }
+    }
 
-        int days = 0;
-
-        for (int y = 2000; y < year; y++) {
-            if (leapYear(y)) {
-                days += 366;
-            } else {
-                days += 365;
-            }
+    private static void validMonth(int month) {
+        if (!isMonth(month)) {
+            throw new IllegalArgumentException("Invalid month");
         }
+    }
 
-        for (int m = 1; m < month; m++) {
-            days += monthDays(m, year);
-        }
-
-        days += day - 1;
-
-        this.daysFrom2000 = days;
+    private static void validDate(int day, int month, int year) {
+        validDay(day, month, year);
+        validMonth(month);
     }
 
     @Override
-    public void set(int day, int month, int year) {
-        if (!valid(day, month, year)) {
-            throw new IllegalArgumentException("Data inválida.");
+    public int[] getDate() {
+        int currentDays = this.days;
+        int year = 2000;
+        while ((!isLeapYear(year) && currentDays >= 365) || (isLeapYear(year)
+            && currentDays >= 366)) {
+            currentDays -= 365;
+            if (isLeapYear(year)) {
+                currentDays--;
+            }
+            year++;
         }
 
-        int days = 0;
+        int month;
+        for (month = 1; month <= 12; month++) {
+            int monthDays = monthDays(month, year);
+            if (currentDays <= monthDays) {
+                break;
+            }
+            currentDays -= monthDays;
+        }
+        int day = currentDays;
+        return new int[]{day, month, year};
 
+    }
+
+    @Override
+    public void setDate(int day, int month, int year) {
+        validDate(day, month, year);
+        int leapYearDays = 0;
         for (int y = 2000; y < year; y++) {
-            if (leapYear(y)) {
-                days += 366;
-            } else {
-                days += 365;
+            if (isLeapYear(y)) {
+                leapYearDays++;
             }
         }
-
+        int yearDays = (year - 2000) * 365 + leapYearDays;
+        int monthDays = 0;
         for (int m = 1; m < month; m++) {
-            days += monthDays(m, year);
+            monthDays += monthDays(m, year);
         }
+        this.days = yearDays + monthDays + day;
+    }
 
-        days += day - 1;
 
-        this.daysFrom2000 = days;
+    @Override
+    public int getYear() {
+        return getDate()[2];
     }
 
     @Override
     public int getMonth() {
-        int days = this.daysFrom2000;
-
-        int year = 2000;
-        while (days >= 365) {
-            if (leapYear(year)) {
-                if (days >= 366) {
-                    days -= 366;
-                    year++;
-                } else {
-                    break;
-                }
-            } else {
-                days -= 365;
-                year++;
-            }
-        }
-
-        int month = 1;
-        while (days >= monthDays(month, year)) {
-            days -= monthDays(month, year);
-            month++;
-        }
-
-        return month;
+        return getDate()[1];
     }
 
     @Override
     public int getDay() {
-        int days = this.daysFrom2000;
-
-        int year = 2000;
-        while (days >= 365) {
-            if (leapYear(year)) {
-                if (days >= 366) {
-                    days -= 366;
-                    year++;
-                } else {
-                    break;
-                }
-            } else {
-                days -= 365;
-                year++;
-            }
-        }
-
-        int month = 1;
-        while (days >= monthDays(month, year)) {
-            days -= monthDays(month, year);
-            month++;
-        }
-
-        return days + 1;
+        return getDate()[0];
     }
 
     @Override
-    public int getYear() {
-        int days = this.daysFrom2000;
+    public void incrementDay() {
+        days++;
+    }
 
-        int year = 2000;
-        while (days >= 365) {
-            if (leapYear(year)) {
-                if (days >= 366) {
-                    days -= 366;
-                    year++;
-                } else {
-                    break;
-                }
-            } else {
-                days -= 365;
-                year++;
-            }
-        }
-
-        return year;
+    @Override
+    public void decrementDay() {
+        days--;
     }
 }

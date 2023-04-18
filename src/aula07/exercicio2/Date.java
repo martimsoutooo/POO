@@ -1,89 +1,57 @@
 package aula07.exercicio2;
 
-public abstract class Date {
-    public abstract void set(int day, int month, int year);
-    public abstract int getMonth();
-    public abstract int getDay();
-    public abstract int getYear();
+public abstract class Date implements Comparable<Date> {
 
-    public static boolean validMonth(int month){
-        if (month > 12 || month < 1) {
-            return false;
-        } else {
-            return true;
-        } 
+
+    public static boolean isLeapYear(int year) {
+        return year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
     }
 
-    public static int monthDays(int month, int year){
-        switch(month){
-            case 2:
-                if (leapYear(year)){
-                    return 29;
-                }
-                else{
-                    return 28;
-                }
-            case 4: case 6: case 9: case 11:
-                return 30;
-            default:
-                return 31;
-        }
+    public static boolean isMonth(int month) {
+        return 1 <= month && month <= 12;
     }
 
-    public static boolean leapYear(int year){
-        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
-            return true;
+    public static int monthDays(int month, int year) {
+        if (!isMonth(month)) {
+            return -1;
         }
-        else{
-            return false;
+        int[] days = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if (month == 2 && isLeapYear(year)) {
+            return 29;
         }
+        return days[month - 1];
     }
 
-    public static boolean valid(int day, int month, int year){
-        if (validMonth(month) && day >= 1 && day <= monthDays(month, year) && year > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-
-    public void increment() {
-        int day = this.getDay() + 1;
-        int month = this.getMonth();
-        int year = this.getYear();
-
-        if (day > monthDays(month, year)) {
-            day = 1;
-            month++;
-            if (month > 12) {
-                month = 1;
-                year++;
+    @Override
+    public int compareTo(Date other) {
+        int[] date1 = getDate();
+        int[] date2 = other.getDate();
+        for (int i = 2; i >= 0; i--) {
+            if (date1[i] > date2[i]) {
+                return 1;
+            } else if (date1[i] < date2[i]) {
+                return -1;
             }
         }
-
-        this.set(day, month, year);
+        return 0;
     }
 
-    public void decrement() {
-        int day = this.getDay() - 1;
-        int month = this.getMonth();
-        int year = this.getYear();
+    protected abstract int[] getDate();
 
-        if (day < 1) {
-            month--;
-            if (month < 1) {
-                month = 12;
-                year--;
-            }
-            day = monthDays(month, year);
-        }
+    protected abstract void setDate(int day, int month, int year);
 
-        this.set(day, month, year);
-    }
+    protected abstract int getYear();
 
+    protected abstract int getMonth();
+
+    protected abstract int getDay();
+
+    protected abstract void incrementDay();
+
+    protected abstract void decrementDay();
+
+    @Override
     public String toString() {
-        return "Date: " + this.getYear() + "-" + this.getMonth() + "-" + this.getDay();
+        return String.format("%02d-%02d-%04d", getDay(), getMonth(), getYear());
     }
 }
-

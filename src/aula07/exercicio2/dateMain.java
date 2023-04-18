@@ -50,7 +50,7 @@ public class dateMain {
                     if (date == null) {
                         System.out.println("Data ainda não criada.");
                     } else {
-                        date.increment();
+                        date.incrementDay();
                         System.out.println("Data incrementada com sucesso.");
                     }
                     break;
@@ -58,7 +58,7 @@ public class dateMain {
                     if (date == null) {
                         System.out.println("Data ainda não criada.");
                     } else {
-                        date.decrement();
+                        date.decrementDay();
                         System.out.println("Data decrementada com sucesso.");
                     }
                     break;
