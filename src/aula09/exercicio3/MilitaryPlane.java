@@ -17,7 +17,7 @@ public class MilitaryPlane extends Plane {
 
     @Override
     public String toString() {
-        return "MilitaryPlane{" + "numMissiles=" + numMissiles + '}';
+        return "MilitaryPlane [Number of Missiles: " + numMissiles + ']' + "[Max Passengers: " + getMaxPassengers() + ']' + "[Year: " + getYear() + ']' + "[Model: " + getModel() + ']' + "[Manufacturer: " + getManufacturer() + ']' + "[ID: " + getId() + ']' + "[Max Speed: " + getMaxSpeed() + ']';
     }
 
     @Override

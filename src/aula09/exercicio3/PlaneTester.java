@@ -13,15 +13,15 @@ public class PlaneTester {
 
         planeManager.removePlane("CP1");
 
-        System.out.println(planeManager);
+        System.out.println("\n" + planeManager);
 
-        System.out.println(planeManager.searchPlane("CP2"));
+        System.out.println("\n" + planeManager.searchPlane("CP2"));
 
-        System.out.println(planeManager.getCommercialPlanes());
+        System.out.println("\n" + planeManager.getCommercialPlanes());
 
-        System.out.println(planeManager.getMilitaryPlanes());
+        System.out.println("\n" + planeManager.getMilitaryPlanes());
 
-        System.out.println(planeManager.getFastestPlane());
+        System.out.println("\n" + planeManager.getFastestPlane());
         
 
     }

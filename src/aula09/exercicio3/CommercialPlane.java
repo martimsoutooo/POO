@@ -17,9 +17,9 @@ public class CommercialPlane extends Plane {
 
     @Override
     public String toString() {
-        return "CommercialPlane{" + "numOfCrewMembers=" + numOfCrewMembers + '}';
+        return "MilitaryPlane [Number of Crew Members: " + numOfCrewMembers + ']' + "[Max Passengers: " + getMaxPassengers() + ']' + "[Year: " + getYear() + ']' + "[Model: " + getModel() + ']' + "[Manufacturer: " + getManufacturer() + ']' + "[ID: " + getId() + ']' + "[Max Speed: " + getMaxSpeed() + ']';
     }
-
+    
     @Override  
     public String getPlaneType() {
         return "Commercial";
