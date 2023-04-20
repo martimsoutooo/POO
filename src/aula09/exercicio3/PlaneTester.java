@@ -1,78 +1,28 @@
 package aula09.exercicio3;
-import java.util.Scanner;
-
 public class PlaneTester {
     public static void main(String[] args) {
         PlaneManager planeManager = new PlaneManager();
-        Scanner scanner = new Scanner(System.in);
-        int choice;
 
-        do {
-            System.out.println("\nPlane Fleet Menu:");
-            System.out.println("1. Add a plane to the fleet");
-            System.out.println("2. Remove a plane from the fleet");
-            System.out.println("3. Search for a plane");
-            System.out.println("4. Print summary of all planes in the fleet");
-            System.out.println("5. Print list of all commercial planes in the fleet");
-            System.out.println("6. Print list of all military planes in the fleet");
-            System.out.println("7. Print the fastest plane in the fleet");
-            System.out.println("0. Exit");
+        planeManager.addPlane(new CommercialPlane(100, 2010, "A380", "Airbus", "CP1", 900, 10));
+        planeManager.addPlane(new CommercialPlane(200, 2015, "A350", "Airbus", "CP2", 950, 15));
+        planeManager.addPlane(new CommercialPlane(150, 2012, "A330", "Airbus", "CP3", 850, 12));
+        planeManager.addPlane(new MilitaryPlane(25, 2010, "Cargo", "Mercedes", "ML1", 1000, 3));
+        planeManager.addPlane(new MilitaryPlane(20, 2015, "M4", "BMW", "ML2", 1100, 4));
 
-            System.out.print("Enter your choice: ");
-            choice = scanner.nextInt();
+        System.out.println(planeManager);
 
-            switch (choice) {
-                case 1:
-                    addPlane(planeManager, scanner);
-                    break;
-                case 2:
-                    removePlane(planeManager, scanner);
-                    break;
-                case 3:
-                    searchPlane(planeManager, scanner);
-                    break;
-                case 4:
-                    printAllPlanes(planeManager);
-                    break;
-                case 5:
-                    printCommercialPlanes(planeManager);
-                    break;
-                case 6:
-                    printMilitaryPlanes(planeManager);
-                    break;
-                case 7:
-                    printFastestPlane(planeManager);
-                    break;
-                case 0:
-                    System.out.println("Exiting program...");
-                    break;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-                    break;
-            }
-        } while (choice != 0);
+        planeManager.removePlane("CP1");
 
-        scanner.close();
-    }
+        System.out.println(planeManager);
 
-    private static void addPlane(PlaneManager planeManager, Scanner scanner) {
-    }
+        System.out.println(planeManager.searchPlane("CP2"));
 
-    private static void removePlane(PlaneManager planeManager, Scanner scanner) {
-    }
+        System.out.println(planeManager.getCommercialPlanes());
 
-    private static void searchPlane(PlaneManager planeManager, Scanner scanner) {
-    }
+        System.out.println(planeManager.getMilitaryPlanes());
 
-    private static void printAllPlanes(PlaneManager planeManager) {
-    }
+        System.out.println(planeManager.getFastestPlane());
+        
 
-    private static void printCommercialPlanes(PlaneManager planeManager) {
-    }
-
-    private static void printMilitaryPlanes(PlaneManager planeManager) {
-    }
-
-    private static void printFastestPlane(PlaneManager planeManager) {
     }
 }
