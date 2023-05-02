@@ -1,7 +1,8 @@
-package aula10;
+package aula10.exercicio1;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class exercicio1 {
     public static void main(String[] args) {
