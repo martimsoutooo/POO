@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="GuiãoEspecial1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/GuiãoEspecial.zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
