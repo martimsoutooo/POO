@@ -11,8 +11,7 @@ public class exercicio3 {
     public static void main(String[] args) {
         Map <Character, List<Integer>> mapa = new HashMap<>();
         Scanner scanner = new Scanner(System.in);
-
-
+        
         System.out.print("Insira uma String: ");
         String str = scanner.nextLine();
 
