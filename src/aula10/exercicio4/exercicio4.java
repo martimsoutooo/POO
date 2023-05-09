@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 
 public class exercicio4 {
-    public static void main(String[] args) throws IOException{ 
+    public static void main(String[] args) throws IOException{
+        ArrayList<String> endsWiths = new ArrayList<>();
         ArrayList<String> wordsList = new ArrayList<>();
         Scanner input = new Scanner(new FileReader("words.txt")); 
 
@@ -22,8 +23,8 @@ public class exercicio4 {
             else {
                 System.out.println(word);
             }
-            
         }
         System.out.println(wordsList);
+
     }
 }
