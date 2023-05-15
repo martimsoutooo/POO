@@ -1,6 +1,7 @@
 package aula11.exercicio2;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class GradebookTester {
     public static void main(String[] args) {
@@ -11,14 +12,16 @@ public class GradebookTester {
         gradebook.load("alunos.txt");
 
         // Add a new student to the collection
-        Student newStudent = new Student("Johny May", new ArrayList<>(List.of(10.0, 15.0, 19.0)));
+        Double[] gradesArray = {10.0, 10.0, 10.0};
+        List<Double> gradesList = new ArrayList<>(Arrays.asList(gradesArray));
+        Student newStudent = new Student("Johny May", gradesList);
         gradebook.addStudent(newStudent);
 
         // Remove a student from the collection
         gradebook.removeStudent("Jane Smith");
 
         // Retrieve a student from the collection
-        Student student = gradebook.getStudent("John Doe");
+        gradebook.getStudent("John Doe");
 
         // Calculate the average grade for a specific student
         double averageGrade = gradebook.calculateAverageGrade("John Doe");
@@ -28,4 +31,3 @@ public class GradebookTester {
         gradebook.printAllStudents();
     }
 }
-

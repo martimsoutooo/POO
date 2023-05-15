@@ -1,65 +1,82 @@
 package aula11.exercicio2;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.List;
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 
-
-public class Gradebook extends Student {
+public class Gradebook {
+    private List<Student> students;
     
+    IGradeCalculator calculator = new SimpleGradeCalculator();
 
-    public Gradebook(String name, List<Double> grades, HashMap<String, Float> gradebook) {
-        super(name, grades);
+    public Gradebook() {
+        this.students = new ArrayList<>();
     }
 
-    public Double separateGrades(List<Double> grades){
-        for (Double grade : grades) {
-            
+    public void load(String filename) {
+        System.out.println("Text file:");
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split("\\|");
+                String name = parts[0];
+                List<Double> scores = new ArrayList<>();
+                for (int i = 1; i < parts.length; i++) {
+                    scores.add(Double.parseDouble(parts[i]));
+                }
+                System.out.println("Name: " + name);
+                System.out.println("Scores: " + scores);
+
+                Student student = new Student(name, scores);
+                this.students.add(student);
+            }
+        } catch (IOException e) {
+            System.err.format("IOException: %s%n", e);
         }
     }
 
-    public void addStudent(Student student, HashMap<String, List<Double> > gradebook) {
-        gradebook.put(getName(), getGrades());
+    public void addStudent(Student student) {
+        this.students.add(student);
+        System.out.println("Student added: " + student.getName());
     }
 
-    public void removeStudent(HashMap<String,List<Double>> gradebook){
-        for(String stdt : gradebook.keySet()){
-            if(stdt.equals()){
-                gradebook.remove(stdt);
+    public void removeStudent(String name) {
+        for (Student student : this.students) {
+            if (student.getName().equals(name)) {
+                this.students.remove(student);
+                break;
             }
         }
+        System.out.println("Student removed: " + name);
     }
 
-    public Student getStudent(String name, ArrayList<Student> gradebook){
-        for (Student student : gradebook) {
+    public Student getStudent(String name) {
+        for (Student student : this.students) {
             if (student.getName().equals(name)) {
+                System.out.println("Student got: " + student.getName());
                 return student;
             }
         }
         return null;
     }
 
-
-
-    public double calculateAverageGrade(String name, ArrayList<Student> gradebook){
-        Student student = getStudent(name, gradebook);
-        if (student == null) {
-            return 0.0;
-        }
-        else{
-            double sum = 0.0;
-            for (double grade : student.getGrades()) {
-                sum += grade;
+    public double calculateAverageGrade(String name) {
+        for (Student student : this.students) {
+            if (student.getName().equals(name)) {
+                List<Double> grades = student.getGrades();
+                return calculator.calculate(grades);
             }
-            return sum/student.getGrades().size();
+        }
+        return 0.0;
+    }
 
+    public void printAllStudents() {
+        for (Student student : this.students) {
+            System.out.println("Name: " + student.getName());
+            System.out.println("Scores: " + student.getGrades());
         }
     }
 
-    public String PrintAllStudent (ArrayList<Student> gradebook){
-        return for(Student student : gradebook){System.out.println(student.getName());};
-    }
 }

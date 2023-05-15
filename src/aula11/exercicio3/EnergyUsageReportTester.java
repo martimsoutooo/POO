@@ -1,3 +1,4 @@
+package aula11.exercicio3;
 import java.util.Arrays;
 import java.io.IOException;
 
@@ -19,7 +20,7 @@ public class EnergyUsageReportTester {
         energyReport.removeCustomer(1015);
         
         // Retrieve a customer from the collection using the getCustomer() method
-        Customer retrievedCustomer = energyReport.getCustomer(1025);
+        energyReport.getCustomer(1025);
         
         // Calculate the total energy usage for a specific customer using the calculateTotalUsage() method
         double totalEnergyUsage = energyReport.calculateTotalUsage(1003);
