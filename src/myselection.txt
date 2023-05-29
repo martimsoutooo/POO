@@ -1,1 +1,2 @@
-Movie{name='The Recruit', score=62.6, rating='PG-13', genre='suspense', duration=115}
+Movie{name='The Hulk', score=61.0, rating='PG-13', genre='action', duration=138}
+Movie{name='The Italian Job', score=66.5, rating='PG-13', genre='action', duration=111}

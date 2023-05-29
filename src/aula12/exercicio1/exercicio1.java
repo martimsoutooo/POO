@@ -14,6 +14,7 @@ public class exercicio1 {
 
         ArrayList<String> palavrasDiferentes = new ArrayList<String>();
 
+    
         try{
             int counter = 0;
             Scanner file = new Scanner(new FileReader(filename));

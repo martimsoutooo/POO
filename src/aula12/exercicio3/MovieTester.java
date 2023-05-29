@@ -70,7 +70,8 @@ public class MovieTester {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter("myselection.txt"))) {
                 double scoreThreshold = 60.0;
                 Scanner sc = new Scanner(System.in);
-                System.out.println("Qual o gênero que deseja selecionar?");
+                System.out.println();
+                System.out.print("Insira o gênero- ");
                 String selectedGenre = sc.nextLine();
                 sc.close(); 
                 // Exemplo: "ação". Aqui você pode solicitar o gênero ao usuário se desejar.
